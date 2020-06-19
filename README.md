@@ -84,7 +84,7 @@ You can call the website in the browser under `http://localhost:8080` now. But o
 
 This approach is not what we want. We need a stable IP address in LAN.
 
-### Be like a cloud provider
+## Be like a cloud provider
 
 What we need is a DHCP server and the installed MetalLB infrastructure (https://metallb.universe.tf). 
 
@@ -115,7 +115,7 @@ pod/speaker-5ctv5                 1/1     Running   0          75s
 
 If so, we are ready to configure our cluster for allocating static ip addresses by load balancers.
 
-#### Configure MetalLB
+## Configure MetalLB
 
 MetalLB supports two configurations of announcing service IP's: Layer2 and BGP. We used Layer2 Configuration because it is easy and works well in most network landscapes (see more information under https://metallb.universe.tf/configuration).
 
@@ -149,13 +149,13 @@ Now you should be able to access your website via webbrowser `http://192.168.1.1
 
 ![Website](images/welcome-nginx.png "welcome-nginx")
 
-### DNS record
+## DNS record
 
 Since the website has a static IP address, it is possible to create an A-record on the DNS server, let say `nginx.your-domain.lan -> 192.168.1.100`, and access the website in web browser under `http://nginx.your-domain.lan`.
 
 That is what you wanted, didn't you?
 
-### Cleaning up
+## Cleaning up
 
 If you are ready and don't want to use the nginx server and MetalLB, you can remove the deployments with `kubectl` again:
 
