@@ -7,7 +7,7 @@ We are not going to explain how to set up a kubernetes cluster in your local net
 
 ## Software Prerequisites
 
-You need an unmanaged kubernetes cluster running in your intranet on several machines. We tested this guide with the k8s-version 1.17.2 on one master and two workers.
+You need an unmanaged kubernetes cluster running in your local network. We tested this guide with the k8s-version 1.17.2 on one master and two workers.
 
 ## Let us fail first
 
