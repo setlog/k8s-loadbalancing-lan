@@ -11,7 +11,7 @@ You need an unmanaged kubernetes cluster running in your local network. We teste
 
 ## Let us fail first
 
-We deploy a simple nginx deployment with two server replicas and a load balancer.
+We deploy a simple nginx deployment with two replicas and a load balancer:
 
 ![Nginx](images/nginx-server.png "nginx-server")
 
@@ -62,28 +62,27 @@ spec:
           - containerPort: 80
 ```
 
-Now we are going to create this deployment by executing `kubectl`.
+Now we are going to create this deployment by executing `kubectl`:
 
 ```sh
 kubectl create -f nginx-server.yaml
 ```
 
-On a managed cluster you would expect the load balancer to obtain an external IP address from the cloud provider. This will not happen in an unmanaged cluster in your LAN. It remains `pending`.
+On a managed cluster you would expect the load balancer to obtain an external IP address from the cloud provider. This will not happen in an unmanaged cluster in your local network. It remains `pending`:
 
 ```sh
 NAME    TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 nginx   LoadBalancer   10.96.34.70   <pending>     80:32593/TCP   5m15s
 ```
 
-What now? You can still access the service by forwarding the port to the localhost:
+What now? You can still access the service by forwarding the port to localhost:
 
 ```sh
   kubectl port-forward -n web service/nginx 8080:80
 ```
 
-You can call the website in the browser under `http://localhost:8080` now. But only you, not your colleagues in the office. 
-
-This approach is not what we want. We need a stable IP address in LAN.
+You can visit the website at `http://localhost:8080` now. But only you, not your colleagues in the office.
+This approach is not what we want. Our load balancer need an ip address in our local network.
 
 ## Be like a cloud provider
 
