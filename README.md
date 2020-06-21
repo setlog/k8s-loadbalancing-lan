@@ -114,9 +114,8 @@ If so, we are ready to configure our cluster for the allocation of static ip add
 
 ## Configure MetalLB
 
-MetalLB supports two configurations of announcing service IP's: Layer2 and BGP. We used Layer2 Configuration because it is easy and works well in most network landscapes (see more information under https://metallb.universe.tf/configuration).
-
-Let's assume you want to access your website under 192.168.1.100. In that case create following ConfigMap and put this IP in `addresses` as a range:
+MetalLB supports two configurations of announcing service ip addresses: Layer2 and BGP. We used Layer2 Configuration because it's easy and works well in most network landscapes (see more information at <https://metallb.universe.tf/configuration)>.
+Let's assume you want to visit your website at `http://192.168.1.100`. For that case we create the following ConfigMap and put this ip address in `addresses` as a range:
 
 ```yaml
 apiVersion: v1
@@ -133,16 +132,16 @@ data:
       - 192.168.1.100-192.168.1.100
 ```
 
-Of course, you can put a real range of ip addresses here, but we want to keep it simple and unambiguous now.
+Of course, you can put a range of ip addresses here, but we want to keep it simple and unambiguous now.
 
-After deploying this YAML with `kubectl create -f metallb-config.yaml`, the load balance is able to obtain a real IP address from the specified range:
+After deploying this YAML with `kubectl create -f metallb-config.yaml`, the load balancer is able to obtain an ip address within our local network:
 
-```
+```sh
 NAME                         TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
 service/nginx                LoadBalancer   10.96.34.70   192.168.1.100   80:32593/TCP   57m
 ```
 
-Now you should be able to access your website via webbrowser `http://192.168.1.100`
+Now you should be able to visit the website at `http://192.168.1.100`:
 
 ![Website](images/welcome-nginx.png "welcome-nginx")
 
