@@ -86,9 +86,7 @@ This approach is not what we want. Our load balancer need an ip address in our l
 
 ## Be like a cloud provider
 
-What we need is a DHCP server and the installed MetalLB infrastructure (https://metallb.universe.tf). 
-
-Since MetalLB runs in a dedicated namespace, we create namespace `metallb-system`:
+What we need is a DHCP server and the installed MetalLB infrastructure (<https://metallb.universe.tf)>.Since MetalLB runs in a dedicated namespace, we create namespace `metallb-system`:
 
 ```sh
 kubectl create namespace metallb-system
@@ -98,22 +96,21 @@ kubectl create namespace metallb-system
 
 ```sh
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
-```
-```sh
 kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.9.3/manifests/metallb.yaml
 ```
 
 Let's take a look at the pods and make sure they are running:
 
-- `kubectl get pod -n metallb-system`
 ```sh
+kubectl get pod -n metallb-system
+
 NAME                              READY   STATUS    RESTARTS   AGE
 pod/controller-5696cd5dcb-9hjss   1/1     Running   0          75s
 pod/speaker-56rsl                 1/1     Running   0          75s
 pod/speaker-5ctv5                 1/1     Running   0          75s
 ```
 
-If so, we are ready to configure our cluster for allocating static ip addresses by load balancers.
+If so, we are ready to configure our cluster for the allocation of static ip addresses by load balancers.
 
 ## Configure MetalLB
 
