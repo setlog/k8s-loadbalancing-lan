@@ -115,7 +115,7 @@ If so, we are ready to configure our cluster for the allocation of static ip add
 ## Configure MetalLB
 
 MetalLB supports two configurations of announcing service ip addresses: Layer2 and BGP. We used Layer2 Configuration because it's easy and works well in most network landscapes (see more information at <https://metallb.universe.tf/configuration)>.
-Let's assume you want to visit your website at `http://192.168.1.100`. For that case we create the following ConfigMap and put this ip address in `addresses` as a range:
+Let's assume you want to visit the website at `http://192.168.1.100`. For that case we create the following ConfigMap and put this ip address in `addresses` as a range:
 
 ```yaml
 apiVersion: v1
@@ -147,7 +147,7 @@ Now you should be able to visit the website at `http://192.168.1.100`:
 
 ## DNS record
 
-Since the website has a static IP address, it is possible to create an A-record on the DNS server, let say `nginx.your-domain.lan -> 192.168.1.100`, and access the website in web browser under `http://nginx.your-domain.lan`.
+Since the website has a static ip address, it's possible to create an CNAME in your DNS, for example `nginx.your-domain.lan -> 192.168.1.100`, and visit the website at `http://nginx.your-domain.lan`.
 
 That is what you wanted, didn't you?
 
