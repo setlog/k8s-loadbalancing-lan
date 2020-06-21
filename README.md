@@ -1,8 +1,9 @@
-## Preface
+# Preface
 
-Kubernetes has already become a common technology for everyone who has a challenge to ship and run the software in the cloud. And every cloud provider helps to setup the infrastructure as easy as possible for us, devop engineers. We just start a kubernetes service, wait a couple of seconds and Voila! It has an external IP that we can assign a DNS name to and access the endpoint as if no magic happened. Have you tried the same in your LAN? If no, give it a try. Just to understand that not everything what a cloud provider does for you can be taken for granted. Let us demonstrate with a simple example, what challenges you are facing and how you can master them.
+Kubernetes has already become a common technology for everyone who has the challenge to ship and run any applications in the cloud. And every cloud provider give us tools like an api, to setup the infrastructure as easy as possible for us, DevOps engineers.
+We just start a kubernetes service, wait a couple of seconds and et voilà! It has an external IP, which we can assign a domain to access the endpoint as if no magic happened. Have you tried the same in your local network? If the answer is no, give it a try. Just to understand that not everything a cloud provider does for you can be taken for granted. Let us use a simple example to show you the challenges you face and how you can master them.
 
-We are not going to explain here, how to set up a kubernetes cluster in your LAN, but how to deploy a simple website in a ready-made cluster and access it by a DNS name in your intranet.
+We are not going to explain how to set up a kubernetes cluster in your local network, but how to deploy a simple nginx in a ready-made cluster and access it by a domain in your local network.
 
 ## Software Prerequisites
 
