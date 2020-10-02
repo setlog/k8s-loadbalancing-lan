@@ -140,6 +140,10 @@ After deploying this YAML with `kubectl create -f metallb-config.yaml`, the load
 NAME                         TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
 service/nginx                LoadBalancer   10.96.34.70   192.168.1.100   80:32593/TCP   57m
 ```
+_Note: if it still does not work, you probably have the [CoreDNS problem](https://github.com/kubernetes/kubeadm/issues/193). In a nutshell: adjust your IP table by performing the following command on the working node, where metallb-controller has been scheduled to:_
+```sh
+  sudo iptables -P FORWARD ACCEPT
+```
 
 Now you should be able to visit the website at `http://192.168.1.100`:
 
